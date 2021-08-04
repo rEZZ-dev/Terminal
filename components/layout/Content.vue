@@ -1,7 +1,7 @@
 <template>
-  <div class="content">
+  <section class="content">
     <Banner />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -14,6 +14,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.content {
+  padding-top: 100px;
+}
 </style>
