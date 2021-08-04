@@ -1,58 +1,35 @@
 <template>
   <header>
-    <Desktop :menu="menu" v-if="!isMobile" />
-    <Mobile :menu="menu" v-else />
+    <nav class="menu">
+      <ul class="items">
+        <li v-for="item in  menu" :key="uniqueId" class="item">
+          <nuxt-link :to="item.link">
+            <h1 class="title" :class="{ 'isActive' : item.active }"> <span class="number" >{{ item.id }}.</span>{{ item.text }}</h1>
+          </nuxt-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
 <script>
-import { ref } from "@vue/composition-api";
-
 import uniqueID from "@/utils/uniqueId";
 import { isMobile } from 'mobile-device-detect';
 
-import Desktop from '@/components/layout/menu/Desktop';
-import Mobile from '@/components/layout/menu/Mobile';
-
 export default {
-  components: {
-    Desktop,
-    Mobile
+  props: {
+    menu: {
+      type: Array,
+      required: true
+    }
   },
 
-  setup() {
+  setup(props) {
     const { uniqueId } = uniqueID();
-    const menu = ref([
-      {
-        id: '01',
-        text: 'begin',
-        link: '/',
-        active: true
-      },
-      {
-        id: '02',
-        text: 'about',
-        link: '/',
-        active: false
-      },
-      {
-        id: '03',
-        text: 'work',
-        link: '/',
-        active: false
-      },
-      {
-        id: '04',
-        text: 'hire me',
-        link: '/',
-        active: false
-      }
-    ])
 
     return {
       uniqueId,
       isMobile,
-      menu
     }
   }
 }

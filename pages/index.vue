@@ -12,15 +12,9 @@ export default {
   name: "Homepage",
 
   components: {
-    Header: () => import( '@/components/layout/Header'),
-    Content: () => import( '@/components/layout/Content'),
-    Footer: () => import( '@/components/layout/Footer')
+    Header: () => import( '@/layout/Header'),
+    Content: () => import( '@/layout/Content'),
+    Footer: () => import( '@/layout/Footer')
   }
 }
 </script>
-
-<style scoped>
-h1 {
-  font-family: 'Oxygen', sans-serif;
-}
-</style>

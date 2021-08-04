@@ -1,0 +1,28 @@
+/* Define styles for the default root window element */
+:root {
+  --background-color-primary: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+  --text-primary-color: $white;
+}
+
+/* Define styles for the root window with dark - mode preference */
+:root.dark-theme {
+  --background-color-primary: linear-gradient(to right, #434343 0%, black 100%);
+    --text-primary-color: black;
+}
+
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  color: var(--text-primary-color);
+  background-image: var(--background-color-primary);;
+  font-family: 'Oxygen', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}

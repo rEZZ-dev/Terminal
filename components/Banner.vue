@@ -1,20 +1,40 @@
 <template>
   <section class="banner">
-    <h1>Hi, my name is:</h1>
-    <vue-typer :text="['Hello World! I was registered globally!', '2312gistered globally!']"></vue-typer>
-
+    <ThemeButton />
   </section>
 </template>
 
 <script>
-import { defineComponent, computed, ref } from '@vue/composition-api'
+import { ref } from '@vue/composition-api'
+import ThemeButton from '@/components/ThemeButton'
 
 export default {
-  name: "Banner",
+  components: {
+    ThemeButton
+  },
 
+  setup() {
+    const strings = ref(['Front-end', 'And', 'Backend', 'Developer'])
+
+    return {
+      strings
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.banner {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  padding: 50px;
 
+
+  &__title {
+    color: $white;
+    font-size: 8rem;
+  }
+}
 </style>
+

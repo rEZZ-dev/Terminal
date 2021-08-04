@@ -13,9 +13,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.content {
-  padding-top: 100px;
-}
-</style>
