@@ -1,26 +1,15 @@
 <template>
-  <div class='content'>
-    <Terminal />
+  <div>
+    <Content />
   </div>
 </template>
 
 <script>
-import Terminal from '@/components/Terminal.vue'
+import Content from '../components/structure/Content'
 
 export default {
   components: {
-    Terminal
+    Content
   }
 }
 </script>
-
-<style lang='scss'>
-.content {
-  height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-</style>
