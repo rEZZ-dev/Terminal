@@ -214,6 +214,7 @@ export default {
         font-size: 10px;
 
         height: 15px;
+        margin-right: 5px;
       }
     }
   }
