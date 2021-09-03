@@ -36,7 +36,7 @@
               </div>
             </div>
 
-            <section v-if='showContent && (showContent.text === "contact me" && showContent.line === index)' class='terminal__info'>
+            <section v-if='showContent && (showContent.text === "contact me" && showContent.line === index)' class='terminal__social'>
               <span>my social:</span>
 
               <ul>
@@ -143,23 +143,31 @@ export default {
   background-color: rgba(0, 0, 0, 0.67);
 
   position: relative;
-  overflow-y: scroll;
 
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
 
   @media screen and (max-width: 1024px) {
     height: 100vh;
     width: 100%;
   }
+
   &__header {
-    width: 100%;
+    position: fixed;
+    width: 600px;
     height: 40px;
     background-color: #171616;
+
+    z-index: 10;
 
     display: flex;
     align-items: center;
 
     text-align: center;
+
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
 
     &__title {
       width: calc(100% - 15px);
@@ -260,12 +268,17 @@ export default {
 
   &__info {
     color: #FFFFFF;
+    padding-top: 50px;
 
     &__comment {
       color: grey;
       font-style: italic;
       font-size: 12px;
     }
+  }
+
+  &__social {
+    color: #FFFFFF;
   }
 }
 
