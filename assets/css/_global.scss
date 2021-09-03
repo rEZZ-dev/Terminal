@@ -31,3 +31,10 @@ p {
 ::-webkit-scrollbar {
   display: none;
 }
+
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,13 +1,14 @@
 <template>
-  <vue-draggable-resizable :resizable="false" @dragging="onDrag">
-    <div class='terminal'>
-      <section class='terminal__header'>
-        <h1 class='terminal__header__title'>rezz@pop-os</h1>
-        <div class='terminal__header__close' >&#10005;</div>
-      </section>
+  <div class='main'>
+    <vue-draggable-resizable v-if='showTerminal' :resizable="false" @dragging="onDrag" >
+      <div class='terminal'>
+        <section class='terminal__header'>
+          <h1 class='terminal__header__title'>rezz@pop-os</h1>
+          <div class='terminal__header__close' @click='showTerminal = false' >&#10005;</div>
+        </section>
 
-      <section class='terminal__info'>
-        <span>commands:</span>
+        <section class='terminal__info'>
+          <span>commands:</span>
 
           <ul>
             <li>clear (clear console)</li>
@@ -22,37 +23,36 @@
             <span>Some things may not work as expected */</span>
           </p>
 
-      </section>
+        </section>
 
-      <section class='terminal__body'>
-        <div>
-          <div v-for='index in lines'  :key='index'>
-            <div class="terminal__inputs" >
-              <div class='terminal__start'>
-                <font-awesome-icon class="terminal__body__begin__icon" :icon="['fas', 'home']"  /> ~
+        <section class='terminal__body'>
+          <div>
+            <div v-for='index in lines'  :key='index'>
+              <div class="terminal__inputs" >
+                <div class='terminal__start'>
+                  <font-awesome-icon class="terminal__body__begin__icon" :icon="['fas', 'home']"  /> ~
+                </div>
+                <div :key='"inputs"+index' style="margin-top: 10px;">
+                  <input :ref='"input-"+index' v-model="inputContent[index]" :disabled='index !== activeLine' type='text' class='terminal__input' @keyup.enter="onEnter">
+                </div>
               </div>
-              <div :key='"inputs"+index' style="margin-top: 10px;">
-                <input :ref='"input-"+index' v-model="inputContent[index]" :disabled='index !== activeLine' type='text' class='terminal__input' @keyup.enter="onEnter">
-              </div>
+
+              <section v-if='showContent && (showContent.text === "contact me" && showContent.line === index)' class='terminal__social'>
+                <span>my social:</span>
+
+                <ul>
+                  <li><a href='https://github.com/rEZZ-dev' target='_blank'> Github </a></li>
+                  <li><a href='https://instagram.com/fabiommfernandes' target='_blank'> Instagram </a></li>
+                  <li><a href="mailto:dev@fabiofernandes.pt"> email me </a></li>
+                </ul>
+              </section>
             </div>
-
-            <section v-if='showContent && (showContent.text === "contact me" && showContent.line === index)' class='terminal__social'>
-              <span>my social:</span>
-
-              <ul>
-                <li><a href='https://github.com/rEZZ-dev' target='_blank'> Github </a></li>
-                <li><a href='https://instagram.com/fabiommfernandes' target='_blank'> Instagram </a></li>
-                <li><a href="mailto:dev@fabiofernandes.pt"> email me </a></li>
-              </ul>
-            </section>
           </div>
-        </div>
-      </section>
-
-
-
-    </div>
-  </vue-draggable-resizable>
+        </section>
+      </div>
+    </vue-draggable-resizable>
+    <span v-if='!showTerminal' class='terminal__open' @click='showTerminal = true'>Open Terminal</span>
+  </div>
 </template>
 
 <script>
@@ -72,7 +72,8 @@ export default {
       lines: 1,
       activeLine: 1,
       inputContent: [],
-      showContent: null
+      showContent: null,
+      showTerminal: true
     }
   },
 
@@ -137,6 +138,11 @@ export default {
 
 
 <style lang='scss'>
+.main  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 .terminal {
   height: 500px;
   width: 600px;
@@ -197,9 +203,9 @@ export default {
 
       transition: all .1s ease-in-out;
 
-     &:hover {
-       transform: scale(1.1)
-     }
+      &:hover {
+        transform: scale(1.1)
+      }
     }
   }
 
@@ -281,12 +287,30 @@ export default {
   &__social {
     color: #FFFFFF;
   }
+
+  &__open {
+    background-image: linear-gradient(to right, #16A085 0%, #F4D03F  51%, #16A085  100%);
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+
+    cursor: pointer;
+
+    &:hover {
+      background-position: right center; /* change the direction of the change here */
+      color: #fff;
+      text-decoration: none;
+    }
+
+  }
 }
 
-@keyframes blinker {
-  50% {
-    opacity: 0;
-  }
 }
 
 
