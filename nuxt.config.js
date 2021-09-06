@@ -22,7 +22,16 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '@/plugins/vue-draggable-resizable', ssr: false }],
+  plugins: [
+    {
+      src: '@/plugins/vue-draggable-resizable',
+      ssr: false
+    },
+    {
+      src: '@/plugins/kursor',
+      ssr: false
+    }
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
