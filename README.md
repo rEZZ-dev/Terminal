@@ -1,3 +1,4 @@
+
 ## Links
 
 - 👉 [See online](https://terminal.fabiofernandes.pt)
@@ -6,7 +7,6 @@
 
 - Terminal build with HTML, CSS and JS
 - Using NuxtJS
-- 
 
 ## Getting started
 
